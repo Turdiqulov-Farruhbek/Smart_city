@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common7.proto";
+
+service MaintanceService {
+    rpc CreateMaintranceSchedule(MaintanceScheduleCreate) returns (MaintanceSchedule) {}
+    rpc UpdateMaintranceSchedule(MaintanceScheduleCreate) returns (MaintanceSchedule) {}
+    rpc DeleteMaintranceSchedule(ById) returns (Void) {}
+    rpc GetAllMaintanceSchedules(MaintanceScheduleFilter) returns (MaintanceScheduleList) {}
+}
+message MaintanceScheduleCreate {
+    string ScheduleId = 1;
+    string RoadId = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+    string StartDate = 5;
+    string EndDate = 6;
+    string Organizer = 7;
+    string Status = 8;
+    string TotalArea = 9;
+}
+message MaintanceSchedule {
+    string Id = 1;
+    string RoadId = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+    string StartTime = 5;
+    string EndTime = 6;
+    string Organizer = 7;
+    string Status = 8;
+    int32 TotalArea = 9;
+    string CreatedAt = 10;
+    string UpdatedAt = 11;
+    string DeletedAt = 12;
+}
+message MaintanceScheduleFilter {
+    string StartDate = 1;
+    string EndDate = 2;
+    string Organizer = 3;
+    string Status = 4;
+    string RoadId = 5;
+}
+message MaintanceScheduleList {
+    repeated MaintanceSchedule Schedules = 1;
+    int32 Count = 2;
+}

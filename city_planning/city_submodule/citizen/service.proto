@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "/genproto/citizen";
+
+package citizen;
+
+import "common.proto";
+
+service CitizenRequestService {
+    rpc CreateServiceRequest(ServiceReqCreate) returns (ServiceReq) {}
+    rpc GetCitizenRequests(ById) returns (ServiceReqList) {}
+    rpc UpdateServiceRequest(ServiceReqCreate) returns (ServiceReq) {}
+    rpc DeleteServiceRequest(ById) returns (Void) {}
+}
+
+message ServiceReq {
+    string RequestId = 1;
+    string CitizenId = 2;
+    string RequestType = 3;
+    string Description = 4;
+    string Status = 5;
+    string CreateAt = 6;
+    string UpdateAt = 7;
+    string DeleteAt = 8;
+}
+message ServiceReqCreate {
+    string RequestId = 1;
+    string CitizenId = 2;
+    string RequestType = 3;
+    string Description = 4;
+    string Status = 5;
+}
+message ServiceReqModel {
+    string CitizenId = 1;
+    string RequestType = 2;
+    string Description = 3;
+    string Status = 4;
+}
+message ServiceReqList {
+    repeated ServiceReq Model = 1;
+    int32 Count = 2;
+}

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service RouteService {
+    rpc CreateTransportRoute(RouteCreate) returns (Route) {}
+    rpc GetAllTrasnportRoutes(RouteFilter) returns (RouteList) {}
+    rpc CreateSchedule(RouteScheduleCreate) returns (RouteSchedule) {}
+    rpc GetScheduleForRoute(ById) returns (RouteScheduleList) {}
+
+}
+
+message Route {
+    string RouteId = 1;
+    string RouteName = 2;
+    string RouteType = 3;
+    string StartPoint = 4;
+    string EndPoint = 5;
+    string CreatedAt = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message RouteCreate {
+    string RouteId = 1;
+    string RouteName = 2;
+    string RouteType = 3;
+    string StartPoint = 4;
+    string EndPoint = 5;
+}
+message RouteList {
+    repeated Route Routes = 1;
+}
+message RouteFilter {
+    string RouteName = 1;
+    string RouteType = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+}
+message RouteSchedule {
+    string ScheduleId = 1;
+    string RouteId = 2;
+    string DepartureTime = 3;
+    string ArrivalTime = 4;
+    string DepartureLocation = 5;
+    int32 DayOfWeek = 6;
+    string CreatedAt = 7;
+    string UpdatedAt = 8;
+    string DeletedAt = 9;
+}
+message RouteScheduleCreate {
+    string ScheduleId = 1;
+    string RouteId = 2;
+    string DepartureTime = 3;
+    string ArrivalTime = 4;
+    string DepartureLocation = 5;
+    int32 DayOfWeek = 6;
+}
+message RouteScheduleList {
+    repeated RouteSchedule Schedules = 1;
+}

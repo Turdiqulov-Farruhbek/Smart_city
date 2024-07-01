@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "/genproto/citizen";
+
+package citizen;
+
+import "common2.proto";
+
+
+service CitizenNotificationService {
+    rpc SetNotificationPref(NotificationPref) returns (Void) {}
+    rpc UpdateNotificationPref(NotificationPref) returns (Void) {}
+    rpc DeleteNotificationPref(ById) returns (Void) {}
+}
+
+
+message NotificationPref {
+    string PreferenceId = 1;
+    string CitizenId = 2;
+    string NotificationType = 3;
+    bool IsEnabled = 4;
+}

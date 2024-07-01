@@ -1,0 +1,1863 @@
+basePath: /
+definitions:
+  citizen.ById:
+    properties:
+      Id:
+        type: string
+    type: object
+  citizen.Citizen:
+    properties:
+      Address:
+        type: string
+      CitizenId:
+        type: string
+      CreateAt:
+        type: string
+      DateOfBirth:
+        type: string
+      DeleteAt:
+        type: string
+      Email:
+        type: string
+      FirstName:
+        type: string
+      LastName:
+        type: string
+      PhoneNumber:
+        type: string
+      UpdateAt:
+        type: string
+      UserId:
+        type: string
+    type: object
+  citizen.CitizenCreate:
+    properties:
+      Address:
+        type: string
+      CitizenId:
+        type: string
+      DateOfBirth:
+        type: string
+      Email:
+        type: string
+      FirstName:
+        type: string
+      LastName:
+        type: string
+      PhoneNumber:
+        type: string
+      UserId:
+        type: string
+    type: object
+  citizen.CitizenModel:
+    properties:
+      Address:
+        type: string
+      DateOfBirth:
+        type: string
+      Email:
+        type: string
+      FirstName:
+        type: string
+      LastName:
+        type: string
+      PhoneNumber:
+        type: string
+      UserId:
+        type: string
+    type: object
+  citizen.Document:
+    properties:
+      CitizenId:
+        type: string
+      CreateAt:
+        type: string
+      DeleteAt:
+        type: string
+      DocumentId:
+        type: string
+      DocumentType:
+        type: string
+      FilePath:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  citizen.DocumentList:
+    properties:
+      Model:
+        items:
+          $ref: '#/definitions/citizen.Document'
+        type: array
+    type: object
+  citizen.Service:
+    properties:
+      CitizenId:
+        $ref: '#/definitions/citizen.CitizenModel'
+      CreateAt:
+        type: string
+      Description:
+        type: string
+      RequestType:
+        type: string
+      Status:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  citizen.ServiceReq:
+    properties:
+      CitizenId:
+        type: string
+      CreateAt:
+        type: string
+      DeleteAt:
+        type: string
+      Description:
+        type: string
+      RequestId:
+        type: string
+      RequestType:
+        type: string
+      Status:
+        type: string
+      UpdateAt:
+        type: string
+    type: object
+  citizen.ServiceReqCreate:
+    properties:
+      CitizenId:
+        type: string
+      Description:
+        type: string
+      RequestId:
+        type: string
+      RequestType:
+        type: string
+      Status:
+        type: string
+    type: object
+  citizen.ServiceReqList:
+    properties:
+      Count:
+        type: integer
+      Model:
+        items:
+          $ref: '#/definitions/citizen.Service'
+        type: array
+    type: object
+  city_planning.BuildingPermitFilter:
+    properties:
+      ApplicationName:
+        type: string
+      PermitId:
+        type: string
+      PermitType:
+        type: string
+      Status:
+        type: string
+      ZoneId:
+        type: string
+    type: object
+  city_planning.CityZone:
+    properties:
+      Area:
+        $ref: '#/definitions/city_planning.Polygon'
+      CreatedAt:
+        type: string
+      CurrentUsage:
+        type: string
+      DeletedAt:
+        type: string
+      UpdatedAt:
+        type: string
+      ZoneId:
+        type: string
+      ZoneName:
+        type: string
+    type: object
+  city_planning.CityZoneList:
+    properties:
+      CityZones:
+        items:
+          $ref: '#/definitions/city_planning.CityZone'
+        type: array
+    type: object
+  city_planning.DemographicData:
+    properties:
+      DataId:
+        type: string
+      DataYear:
+        type: string
+      DeletedAt:
+        type: string
+      MedianAge:
+        type: integer
+      MedianIncome:
+        type: number
+      Population:
+        type: integer
+      UpdatedAt:
+        type: string
+      ZoneId:
+        type: string
+    type: object
+  city_planning.DemographicDataList:
+    properties:
+      DemographicDatas:
+        items:
+          $ref: '#/definitions/city_planning.DemographicData'
+        type: array
+    type: object
+  city_planning.InfrastuctureAsset:
+    properties:
+      AssetId:
+        type: string
+      AssetType:
+        type: string
+      CurrentStatus:
+        type: string
+      DeletedAt:
+        type: string
+      InstallationDate:
+        type: string
+      Location:
+        $ref: '#/definitions/city_planning.Point'
+      UpdatedAt:
+        type: string
+    type: object
+  city_planning.InfrastuctureAssetList:
+    properties:
+      Assets:
+        items:
+          $ref: '#/definitions/city_planning.InfrastuctureAsset'
+        type: array
+    type: object
+  city_planning.PlanningProposalCreate:
+    properties:
+      Description:
+        type: string
+      ProposalId:
+        type: string
+      ProposalType:
+        type: string
+      Status:
+        type: string
+      ZoneId:
+        type: string
+    type: object
+  city_planning.Point:
+    properties:
+      latitude:
+        type: number
+      longitude:
+        type: number
+    type: object
+  city_planning.Polygon:
+    properties:
+      vertices:
+        items:
+          $ref: '#/definitions/city_planning.Point'
+        type: array
+    type: object
+  city_planning.ProposalFeedbackCreate:
+    properties:
+      CitizenId:
+        type: string
+      FeedbackId:
+        type: string
+      FeedbackText:
+        type: string
+      ProposalId:
+        type: string
+    type: object
+  city_planning.Void:
+    type: object
+  emergency_response.AlertsCreateReq:
+    properties:
+      affected_area:
+        type: string
+      issued_at:
+        type: string
+      message:
+        type: string
+      type:
+        type: string
+    type: object
+  emergency_response.AlertsRes:
+    properties:
+      affected_area:
+        type: string
+      id:
+        type: string
+      issued_at:
+        type: string
+      message:
+        type: string
+      type:
+        type: string
+    type: object
+  emergency_response.DispatchesCreateReq:
+    properties:
+      arrived_at:
+        type: string
+      dispatched_at:
+        type: string
+      incident_id:
+        type: string
+      resource_id:
+        type: string
+    type: object
+  emergency_response.DispatchesRes:
+    properties:
+      arrived_at:
+        type: string
+      dispatched_at:
+        type: string
+      id:
+        type: string
+      incident_id:
+        type: string
+      resource_id:
+        type: string
+    type: object
+  emergency_response.IncidentsCreateReq:
+    properties:
+      description:
+        type: string
+      location:
+        type: string
+      reported_at:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  emergency_response.IncidentsGetByIdRes:
+    properties:
+      incident:
+        $ref: '#/definitions/emergency_response.IncidentsRes'
+    type: object
+  emergency_response.IncidentsRes:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      location:
+        type: string
+      reported_at:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  emergency_response.IncidentsUpdateReq:
+    properties:
+      id:
+        type: string
+      incident:
+        $ref: '#/definitions/emergency_response.IncidentsCreateReq'
+    type: object
+  emergency_response.ResourcesGetAllRes:
+    properties:
+      resources:
+        items:
+          $ref: '#/definitions/emergency_response.ResourcesRes'
+        type: array
+    type: object
+  emergency_response.ResourcesGetByIdRes:
+    properties:
+      resource:
+        $ref: '#/definitions/emergency_response.ResourcesRes'
+    type: object
+  emergency_response.ResourcesRes:
+    properties:
+      current_location:
+        type: string
+      id:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  emergency_response.RoutesGetByIdRes:
+    properties:
+      route:
+        $ref: '#/definitions/emergency_response.RoutesRes'
+    type: object
+  emergency_response.RoutesRes:
+    properties:
+      description:
+        type: string
+      end_point:
+        type: string
+      id:
+        type: string
+      start_point:
+        type: string
+    type: object
+  energy_management.Building:
+    properties:
+      Address:
+        type: string
+      BuildingId:
+        type: string
+      BuildingType:
+        type: string
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      TotalArea:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  energy_management.EnergyMeter:
+    properties:
+      BuildingId:
+        type: string
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      MeterId:
+        type: string
+      MeterType:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  energy_management.MeterReading:
+    properties:
+      MeterId:
+        type: string
+      ReadingId:
+        type: string
+      ReadingValue:
+        type: number
+      Time:
+        type: string
+    type: object
+  energy_management.Void:
+    type: object
+  enviromental_monitoring.AirQualityList:
+    properties:
+      AirQualityReadings:
+        items:
+          $ref: '#/definitions/enviromental_monitoring.AirQualityReading'
+        type: array
+    type: object
+  enviromental_monitoring.AirQualityReading:
+    properties:
+      ReadingId:
+        type: string
+      StationId:
+        type: string
+      Time:
+        type: string
+      ozone_level:
+        type: number
+      pm10_level:
+        type: number
+      pm25_level:
+        type: number
+    type: object
+  enviromental_monitoring.GreenSpace:
+    properties:
+      Area:
+        type: number
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      Location:
+        $ref: '#/definitions/enviromental_monitoring.Polygon'
+      SpaceId:
+        type: string
+      SpaceName:
+        type: string
+      Type:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  enviromental_monitoring.GreenSpaceList:
+    properties:
+      greenSpaces:
+        items:
+          $ref: '#/definitions/enviromental_monitoring.GreenSpace'
+        type: array
+    type: object
+  enviromental_monitoring.NoiseArea:
+    properties:
+      AreaCovered:
+        $ref: '#/definitions/enviromental_monitoring.Polygon'
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: integer
+      UpdatedAt:
+        type: string
+      ZoneId:
+        type: string
+      ZoneName:
+        type: string
+    type: object
+  enviromental_monitoring.PlantRegistry:
+    properties:
+      PlantDate:
+        type: string
+      Quantity:
+        type: integer
+      RegistryId:
+        type: string
+      SpaceId:
+        type: string
+      SpeciesName:
+        type: string
+    type: object
+  enviromental_monitoring.Point:
+    properties:
+      latitude:
+        type: number
+      longitude:
+        type: number
+    type: object
+  enviromental_monitoring.Polygon:
+    properties:
+      vertices:
+        items:
+          $ref: '#/definitions/enviromental_monitoring.Point'
+        type: array
+    type: object
+  enviromental_monitoring.RecyclingCenter:
+    properties:
+      AcceptedMaterials:
+        type: string
+      Address:
+        type: string
+      CenterId:
+        type: string
+      CenterName:
+        type: string
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  enviromental_monitoring.RecyclingCenterList:
+    properties:
+      RecyclingCenters:
+        items:
+          $ref: '#/definitions/enviromental_monitoring.RecyclingCenter'
+        type: array
+    type: object
+  enviromental_monitoring.Station:
+    properties:
+      InstallationDate:
+        type: string
+      Location:
+        $ref: '#/definitions/enviromental_monitoring.Point'
+      StationId:
+        type: string
+    type: object
+  enviromental_monitoring.Void:
+    type: object
+  transport.Incident:
+    properties:
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      Description:
+        type: string
+      IncidentId:
+        type: string
+      RoadId:
+        type: string
+      Status:
+        type: string
+      Time:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  transport.IncidentCreate:
+    properties:
+      Description:
+        type: string
+      RoadId:
+        type: string
+      Status:
+        type: string
+      Time:
+        type: string
+    type: object
+  transport.MaintanceSchedule:
+    properties:
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      EndPoint:
+        type: string
+      EndTime:
+        type: string
+      Id:
+        type: string
+      Organizer:
+        type: string
+      RoadId:
+        type: string
+      StartPoint:
+        type: string
+      StartTime:
+        type: string
+      Status:
+        type: string
+      TotalArea:
+        type: integer
+      UpdatedAt:
+        type: string
+    type: object
+  transport.MaintanceScheduleList:
+    properties:
+      Count:
+        type: integer
+      Schedules:
+        items:
+          $ref: '#/definitions/transport.MaintanceSchedule'
+        type: array
+    type: object
+  transport.PakingLotList:
+    properties:
+      Count:
+        type: integer
+      ParkingLots:
+        items:
+          $ref: '#/definitions/transport.ParkingLot'
+        type: array
+    type: object
+  transport.ParkingLot:
+    properties:
+      Address:
+        type: string
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      FreeSpaces:
+        type: integer
+      LotId:
+        type: string
+      LotName:
+        type: string
+      OccupiedSpaces:
+        type: integer
+      TotalSpaces:
+        type: integer
+      UpdatedAt:
+        type: string
+    type: object
+  transport.ParkingLotCreate:
+    properties:
+      Address:
+        type: string
+      FreeSpaces:
+        type: integer
+      LotName:
+        type: string
+      OccupiedSpaces:
+        type: integer
+      TotalSpaces:
+        type: integer
+    type: object
+  transport.Road:
+    properties:
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      EndPoint:
+        type: string
+      Lenght:
+        type: integer
+      RoadId:
+        type: string
+      RoadName:
+        type: string
+      StartPoint:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  transport.RoadCreate:
+    properties:
+      EndPoint:
+        type: string
+      Lenght:
+        type: integer
+      RoadId:
+        type: string
+      RoadName:
+        type: string
+      StartPoint:
+        type: string
+    type: object
+  transport.Route:
+    properties:
+      CreatedAt:
+        type: string
+      DeletedAt:
+        type: string
+      EndPoint:
+        type: string
+      RouteId:
+        type: string
+      RouteName:
+        type: string
+      RouteType:
+        type: string
+      StartPoint:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  transport.RouteList:
+    properties:
+      Routes:
+        items:
+          $ref: '#/definitions/transport.Route'
+        type: array
+    type: object
+  transport.RouteSchedule:
+    properties:
+      ArrivalTime:
+        type: string
+      CreatedAt:
+        type: string
+      DayOfWeek:
+        type: integer
+      DeletedAt:
+        type: string
+      DepartureTime:
+        type: string
+      RouteId:
+        type: string
+      ScheduleId:
+        type: string
+      UpdatedAt:
+        type: string
+    type: object
+  transport.RouteScheduleList:
+    properties:
+      Schedules:
+        items:
+          $ref: '#/definitions/transport.RouteSchedule'
+        type: array
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API for Smart City Management System resources
+  title: Smart City Management System API
+  version: "1.0"
+paths:
+  /citizens/{citizenId}/documents:
+    post:
+      consumes:
+      - application/json
+      description: Create documents for a specific citizen.
+      parameters:
+      - description: Citizen ID
+        in: path
+        name: citizenId
+        required: true
+        type: string
+      - description: Document Data
+        in: body
+        name: document
+        required: true
+        schema:
+          $ref: '#/definitions/citizen.ById'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/citizen.DocumentList'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create documents for a citizen
+      tags:
+      - citizens
+  /citizens/{citizenId}/getbyid:
+    get:
+      description: Get the profile details of a citizen by ID.
+      parameters:
+      - description: Citizen ID
+        in: path
+        name: citizenId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/citizen.Citizen'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get citizen profile
+      tags:
+      - citizens
+  /citizens/{citizenId}/requests:
+    get:
+      description: Get all service requests made by a specific citizen.
+      parameters:
+      - description: Citizen ID
+        in: path
+        name: citizenId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/citizen.ServiceReqList'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get citizen requests
+      tags:
+      - citizens
+    post:
+      consumes:
+      - application/json
+      description: Create a new service request for a citizen.
+      parameters:
+      - description: Citizen ID
+        in: path
+        name: citizenId
+        required: true
+        type: string
+      - description: Service Request Data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/citizen.ServiceReqCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/citizen.ServiceReq'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create a new service request
+      tags:
+      - citizens
+  /citizens/{citizenId}/update:
+    put:
+      consumes:
+      - application/json
+      description: Update the profile details of a citizen by ID.
+      parameters:
+      - description: Citizen ID
+        in: path
+        name: citizenId
+        required: true
+        type: string
+      - description: Updated Citizen Data
+        in: body
+        name: citizen
+        required: true
+        schema:
+          $ref: '#/definitions/citizen.CitizenCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/citizen.Citizen'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update citizen profile
+      tags:
+      - citizens
+  /citizens/create:
+    post:
+      consumes:
+      - application/json
+      description: Register a new citizen with the provided details.
+      parameters:
+      - description: Citizen Data
+        in: body
+        name: citizen
+        required: true
+        schema:
+          $ref: '#/definitions/citizen.CitizenCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/citizen.Citizen'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create a new citizen
+      tags:
+      - citizens
+  /emergency/alerts/areas/{areaId}:
+    post:
+      consumes:
+      - application/json
+      description: Send an emergency alert to a specific area.
+      parameters:
+      - description: Area ID
+        in: path
+        name: areaId
+        required: true
+        type: string
+      - description: Alert Data
+        in: body
+        name: alert
+        required: true
+        schema:
+          $ref: '#/definitions/emergency_response.AlertsCreateReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/emergency_response.AlertsRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Send an alert to an area
+      tags:
+      - emergency
+  /emergency/evacuation/routes/{areaId}:
+    get:
+      description: Get recommended evacuation routes for a specific area.
+      parameters:
+      - description: Area ID
+        in: path
+        name: areaId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/emergency_response.RoutesGetByIdRes'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get evacuation routes for an area
+      tags:
+      - emergency
+  /emergency/incidents:
+    post:
+      consumes:
+      - application/json
+      description: Report a new incident with the provided details.
+      parameters:
+      - description: Incident Data
+        in: body
+        name: incident
+        required: true
+        schema:
+          $ref: '#/definitions/emergency_response.IncidentsCreateReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/emergency_response.IncidentsRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Report a new incident
+      tags:
+      - emergency
+  /emergency/incidents/{incidentId}/status:
+    put:
+      consumes:
+      - application/json
+      description: Update the status of an incident by its ID.
+      parameters:
+      - description: Incident ID
+        in: path
+        name: incidentId
+        required: true
+        type: string
+      - description: Incident Status Update
+        in: body
+        name: status
+        required: true
+        schema:
+          $ref: '#/definitions/emergency_response.IncidentsUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/emergency_response.IncidentsRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update incident status
+      tags:
+      - emergency
+  /emergency/incidents/active:
+    get:
+      description: Retrieve all currently active incidents.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/emergency_response.IncidentsGetByIdRes'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get active incidents
+      tags:
+      - emergency
+  /emergency/resources/{resourceId}/dispatch:
+    post:
+      consumes:
+      - application/json
+      description: Dispatch a resource to an incident or location.
+      parameters:
+      - description: Resource ID
+        in: path
+        name: resourceId
+        required: true
+        type: string
+      - description: Resource Dispatch Data
+        in: body
+        name: dispatch
+        required: true
+        schema:
+          $ref: '#/definitions/emergency_response.DispatchesCreateReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/emergency_response.DispatchesRes'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Dispatch a resource
+      tags:
+      - emergency
+  /emergency/resources/available/{emergencyTypeId}:
+    get:
+      description: Get all available resources for a specific type of emergency.
+      parameters:
+      - description: Emergency Type ID
+        in: path
+        name: emergencyTypeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/emergency_response.ResourcesGetByIdRes'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get available resources by emergency type
+      tags:
+      - emergency
+  /energy/consumption/buildings/{buildingId}/hourly:
+    get:
+      description: Retrieve hourly energy consumption data for a specific building.
+      parameters:
+      - description: Building ID
+        in: path
+        name: buildingId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/energy_management.Building'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get hourly building energy consumption
+      tags:
+      - energy
+  /energy/consumption/city/daily:
+    get:
+      description: Retrieve daily energy consumption data for the city.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/energy_management.EnergyMeter'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get daily city energy consumption
+      tags:
+      - energy
+  /energy/meters/{meterId}/readings:
+    post:
+      consumes:
+      - application/json
+      description: Record energy meter readings for a specific meter.
+      parameters:
+      - description: Meter ID
+        in: path
+        name: meterId
+        required: true
+        type: string
+      - description: Meter Reading Data
+        in: body
+        name: reading
+        required: true
+        schema:
+          $ref: '#/definitions/energy_management.MeterReading'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/energy_management.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Record meter readings
+      tags:
+      - energy
+  /environment/air-quality/city/forecast:
+    get:
+      description: Retrieve air quality forecast data for the city.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.AirQualityList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get city air quality forecast
+      tags:
+      - environment
+  /environment/air-quality/stations/{stationId}/current:
+    get:
+      description: Retrieve current air quality data from a specific station.
+      parameters:
+      - description: Station ID
+        in: path
+        name: stationId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.Station'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get current air quality
+      tags:
+      - environment
+  /environment/green-spaces/{spaceId}/status:
+    get:
+      description: Retrieve status information for a specific green space.
+      parameters:
+      - description: Space ID
+        in: path
+        name: spaceId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.GreenSpaceList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get green space status
+      tags:
+      - environment
+  /environment/noise/zones/{zoneId}/levels:
+    get:
+      description: Retrieve noise levels for a specific zone.
+      parameters:
+      - description: Zone ID
+        in: path
+        name: zoneId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.NoiseArea'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get noise levels in a zone
+      tags:
+      - environment
+  /environment/plants/{speciesId}/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new plant species.
+      parameters:
+      - description: Species ID
+        in: path
+        name: speciesId
+        required: true
+        type: string
+      - description: Plant Species Registration Data
+        in: body
+        name: plant
+        required: true
+        schema:
+          $ref: '#/definitions/enviromental_monitoring.PlantRegistry'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.Void'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Register a plant species
+      tags:
+      - environment
+  /environment/recycling/centers/{areaId}:
+    get:
+      description: Retrieve information about recycling centers in a specific area.
+      parameters:
+      - description: Area ID
+        in: path
+        name: areaId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/enviromental_monitoring.RecyclingCenterList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get recycling centers by area
+      tags:
+      - environment
+  /planning/demographics/{areaId}:
+    get:
+      description: Get demographics details for a specific area by ID.
+      parameters:
+      - description: Area ID
+        in: path
+        name: areaId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city_planning.DemographicDataList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get demographics details
+      tags:
+      - city_planning
+  /planning/infrastructure/{infrastructureId}/status:
+    get:
+      description: Get status of a specific infrastructure by ID.
+      parameters:
+      - description: Infrastructure ID
+        in: path
+        name: infrastructureId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city_planning.InfrastuctureAssetList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get infrastructure status
+      tags:
+      - city_planning
+  /planning/land-use/{parcelId}/change-request:
+    post:
+      consumes:
+      - application/json
+      description: Create a land-use change request for a specific parcel.
+      parameters:
+      - description: Parcel ID
+        in: path
+        name: parcelId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/city_planning.Void'
+        "400":
+          description: 'error": "Bad Request'
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create a land-use change request
+      tags:
+      - city_planning
+  /planning/permits/{permitTypeId}/requirements:
+    get:
+      description: Get requirements for a specific permit type by ID.
+      parameters:
+      - description: Permit Type ID
+        in: path
+        name: permitTypeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city_planning.BuildingPermitFilter'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get permit requirements
+      tags:
+      - city_planning
+  /planning/proposals:
+    post:
+      consumes:
+      - application/json
+      description: Create a new planning proposal with the provided details.
+      parameters:
+      - description: Planning Proposal Data
+        in: body
+        name: proposal
+        required: true
+        schema:
+          $ref: '#/definitions/city_planning.PlanningProposalCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/city_planning.Void'
+        "400":
+          description: 'error": "Bad Request'
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create a new planning proposal
+      tags:
+      - city_planning
+  /planning/proposals/{proposalId}/feedback:
+    post:
+      consumes:
+      - application/json
+      description: Submit feedback for a specific planning proposal.
+      parameters:
+      - description: Proposal ID
+        in: path
+        name: proposalId
+        required: true
+        type: string
+      - description: Proposal Feedback Data
+        in: body
+        name: feedback
+        required: true
+        schema:
+          $ref: '#/definitions/city_planning.ProposalFeedbackCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/city_planning.Void'
+        "400":
+          description: 'error": "Bad Request'
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Submit feedback for a planning proposal
+      tags:
+      - city_planning
+  /planning/zones/{zoneId}/current:
+    get:
+      description: Get current zone details by zone ID.
+      parameters:
+      - description: Zone ID
+        in: path
+        name: zoneId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/city_planning.CityZoneList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get current zone details
+      tags:
+      - city_planning
+  /transport/incidents/report:
+    post:
+      consumes:
+      - application/json
+      description: Report a transportation-related incident.
+      parameters:
+      - description: Incident Report Data
+        in: body
+        name: incident
+        required: true
+        schema:
+          $ref: '#/definitions/transport.IncidentCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.Incident'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Report an incident
+      tags:
+      - transport
+  /transport/maintenance/schedule:
+    get:
+      description: Retrieve the maintenance schedule for transport infrastructure.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.MaintanceScheduleList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get maintenance schedule
+      tags:
+      - transport
+  /transport/parking-lots:
+    get:
+      description: Retrieve information about all parking lots.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.PakingLotList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all parking lots
+      tags:
+      - transport
+  /transport/parking-lots/{lotId}/reserve:
+    post:
+      consumes:
+      - application/json
+      description: Reserve a parking lot by its ID.
+      parameters:
+      - description: Lot ID
+        in: path
+        name: lotId
+        required: true
+        type: string
+      - description: Parking Lot Reservation Data
+        in: body
+        name: reservation
+        required: true
+        schema:
+          $ref: '#/definitions/transport.ParkingLotCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.ParkingLot'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Reserve a parking lot
+      tags:
+      - transport
+  /transport/parking-lots/{lotId}/status:
+    get:
+      description: Retrieve status information for a specific parking lot.
+      parameters:
+      - description: Lot ID
+        in: path
+        name: lotId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.ParkingLot'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get parking lot status
+      tags:
+      - transport
+  /transport/roads/{roadId}/signals:
+    post:
+      consumes:
+      - application/json
+      description: Create or update signals for a specific road.
+      parameters:
+      - description: Road ID
+        in: path
+        name: roadId
+        required: true
+        type: string
+      - description: Road Signal Control Data
+        in: body
+        name: signals
+        required: true
+        schema:
+          $ref: '#/definitions/transport.RoadCreate'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/transport.Road'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Control road signals
+      tags:
+      - transport
+  /transport/roads/{roadId}/traffic:
+    get:
+      description: Retrieve traffic information for a specific road.
+      parameters:
+      - description: Road ID
+        in: path
+        name: roadId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.Road'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get road traffic status
+      tags:
+      - transport
+  /transport/routes:
+    get:
+      description: Retrieve all transport routes.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.RouteList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all transport routes
+      tags:
+      - transport
+  /transport/routes/{routeId}/schedule:
+    get:
+      description: Retrieve the schedule for a specific transport route.
+      parameters:
+      - description: Route ID
+        in: path
+        name: routeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/transport.RouteScheduleList'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get route schedule
+      tags:
+      - transport
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

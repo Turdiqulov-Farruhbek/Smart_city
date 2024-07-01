@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "/genproto/energy_management";
+
+package energy_management;
+
+message Void {}
+
+message ById {
+    string Id = 1;
+}

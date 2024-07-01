@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common.proto";
+
+service EmergencyIncidentService {
+    rpc Create(IncidentsCreateReq) returns(IncidentsRes){}
+    rpc GetById(ById) returns(IncidentsGetByIdRes){}
+    rpc GetAll(Filter) returns(IncidentsGetAllRes){}
+    rpc Update(IncidentsUpdateReq) returns(IncidentsRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message IncidentsCreateReq{
+    string type = 1;
+    string location = 2;
+    string description = 3;
+    string status = 4;
+    string reported_at = 5;
+}
+
+message IncidentsRes{
+    string id = 1;
+    string type = 2;
+    string location = 3;
+    string description = 4;
+    string status = 5;
+    string reported_at = 6;
+}
+
+message IncidentsGetByIdRes{
+    IncidentsRes incident = 1;
+}
+
+message IncidentsGetAllRes{
+    repeated IncidentsRes incidents = 1;
+}
+
+message IncidentsUpdateReq{
+    string id = 1;
+    IncidentsCreateReq incident = 2;
+}

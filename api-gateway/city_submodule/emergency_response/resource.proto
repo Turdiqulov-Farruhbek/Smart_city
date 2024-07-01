@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common4.proto";
+
+service EmergencyResourceService{
+    rpc Create(ResourcesCreateReq) returns(ResourcesRes){}
+    rpc GetById(ById) returns(ResourcesGetByIdRes){}
+    rpc GetAll(Filter) returns(ResourcesGetAllRes){}
+    rpc Update(ResourcesUpdateReq) returns(ResourcesRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message ResourcesCreateReq{
+    string type = 1;
+    string current_location = 2;
+    string status = 3;
+}
+
+message ResourcesRes{
+    string id = 1;
+    string type = 2;
+    string current_location = 3;
+    string status = 4;
+}
+
+message ResourcesGetByIdRes{
+    ResourcesRes resource = 1;
+}
+
+message ResourcesGetAllRes{
+    repeated ResourcesRes resources = 1;
+}
+
+message ResourcesUpdateReq{
+    string id = 1;
+    ResourcesCreateReq resource = 2;
+}

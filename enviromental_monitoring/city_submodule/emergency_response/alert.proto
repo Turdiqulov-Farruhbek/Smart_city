@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common.proto";
+
+service AlertService{
+    rpc Create(AlertsCreateReq) returns(AlertsRes){}
+    rpc GetById(ById) returns(AlertsGetByIdRes){}
+    rpc GetAll(Filter) returns(AlertsGetAllRes){}
+    rpc Update(AlertsUpdateReq) returns(AlertsRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message AlertsCreateReq{
+    string type = 1;
+    string message = 2;
+    string affected_area = 3;
+    string issued_at = 4;
+}
+
+message AlertsRes{
+    string id = 1;
+    string type = 2;
+    string message = 3;
+    string affected_area = 4;
+    string issued_at = 5;
+}
+
+message AlertsGetByIdRes{
+    AlertsRes alert = 1;
+}
+
+message AlertsGetAllRes{
+    repeated AlertsRes alerts = 1;
+}
+
+message AlertsUpdateReq{
+    string id = 1;
+    AlertsCreateReq alert = 2;
+}

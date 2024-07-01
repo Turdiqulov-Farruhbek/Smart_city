@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common.proto";
+
+service EmergencyFacilityService {
+    rpc Create(FacilitiesCreateReq) returns(FacilitiesRes){}
+    rpc GetById(ById) returns(FacilitiesGetByIdRes){}
+    rpc GetAll(Filter) returns(FacilitiesGetAllRes){}
+    rpc Update(FacilitiesUpdateReq) returns(FacilitiesRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message FacilitiesCreateReq{
+    string type = 1;
+    string name = 2;
+    string address = 3;
+    int64 capacity = 4;
+}
+
+message FacilitiesRes{
+    string id = 1;
+    string type = 2;
+    string name = 3;
+    string address = 4;
+    int64 capacity = 5;
+}
+
+message FacilitiesGetByIdRes{
+    FacilitiesRes facelity = 1;
+}
+
+message FacilitiesGetAllRes{
+    repeated FacilitiesRes facilities = 1;
+}
+
+message FacilitiesUpdateReq{
+    string id = 1;
+    FacilitiesCreateReq facelity = 2;
+}

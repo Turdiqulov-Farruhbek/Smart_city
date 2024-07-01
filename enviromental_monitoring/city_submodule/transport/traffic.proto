@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+import "road.proto";
+
+
+service TrafficService {
+    rpc SetUpTrafficCondition(TarfficConditionCreate) returns (TarfficConditionRes) {}
+    rpc GetTrafficCondition(ById) returns (TarfficConditionRes) {}
+    rpc UpdateTrafficCondition(TarfficConditionUpdate) returns (TarfficConditionRes) {}
+}
+
+message TarfficCondition {
+    string ConditionId = 1;
+    string RoadId = 2;
+    string startPoint = 3;
+    string endPoint = 4;
+    string startTime = 5;
+    string endTime = 6;
+    string Description = 7;
+    string TrafficLevel = 8;
+    string CreatedAt = 9;
+    string UpdatedAt = 10;
+    string DeletedAt = 11;
+}
+message TarfficConditionRes {
+    string ConditionId = 1;
+    RoadRes Road = 2;
+    string startPoint = 3;
+    string endPoint = 4;
+    string startTime = 5;
+    string endTime = 6;
+    string Description = 7;
+    string TrafficLevel = 8;
+}
+message TarfficConditionUpdate {
+    string ConditionId = 1;
+    string RoadId = 2;
+    string startPoint = 3;
+    string endPoint = 4;
+    string startTime = 5;
+    string endTime = 6;
+    string Description = 7;
+    string TrafficLevel = 8;
+}
+message TarfficConditionCreate {
+    string RoadId = 1;
+    string startPoint = 2;
+    string endPoint = 3;
+    string startTime = 4;
+    string endTime = 5;
+    string Description = 6;
+    string TrafficLevel = 7;
+}

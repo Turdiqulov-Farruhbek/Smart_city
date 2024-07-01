@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common.proto";
+
+service NoiseLevelReadingService {
+    rpc CreateNoiseLevelReading (NoiseLevelReading) returns (Void) {}
+    rpc GetNoiseLevelReading (ZoneFilter) returns (NoiseLevelReadingList) {}
+}
+message NoiseLevelReading {
+    string ReadingId = 1;
+    string ZoneId =2;
+    float DecibelLevel = 3;
+    string Time =4;
+}
+message NoiseLevelReadingList {
+    repeated NoiseLevelReading NoiseLevelReadings = 1;
+}
+message ZoneFilter {
+    string ZoneId = 1;
+    string Time = 2;
+}

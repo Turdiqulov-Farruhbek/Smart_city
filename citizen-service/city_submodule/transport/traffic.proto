@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service TrafficService {
+    rpc SetUpTrafficCondition(TarfficConditionCreate) returns (TarfficCondition) {}
+    rpc GetTrafficCondition(ById) returns (TarfficCondition) {}
+    rpc UpdateTrafficCondition(TarfficConditionCreate) returns (TarfficCondition) {}
+}
+
+message TarfficCondition {
+    string ConditionId = 1;
+    string RoadId = 2;
+    string TrafficLevel = 3;
+    string Description = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message TarfficConditionCreate {
+    string ConditionId = 1;
+    string RoadId = 2;
+    string TrafficLevel = 3;
+}

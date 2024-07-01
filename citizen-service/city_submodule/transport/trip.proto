@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service TripService {
+    rpc CreateTrip(TripCreate) returns (Trip) {}
+    rpc UpdateTrip(TripCreate) returns (Trip) {}
+    rpc GetTrip(ById) returns (Trip) {}
+    rpc DeleteTrip(ById) returns (Void) {}
+}
+message Trip {
+    string TripId = 1;
+    string CitizenId = 2;
+    string StartDate = 3;
+    string EndDate = 4;
+    string Status = 5;
+    string PublicTransportId = 6;
+    string RouteId = 7;
+    string CreatedAt = 8;
+    string UpdatedAt = 9;
+    string DeletedAt = 10;
+}
+message TripCreate {
+    string TripId = 1;
+    string CitizenId = 2;
+    string StartDate = 3;
+    string EndDate = 4;
+    string Status = 5;
+    string PublicTransportId = 6;
+    string RouteId = 7;
+}

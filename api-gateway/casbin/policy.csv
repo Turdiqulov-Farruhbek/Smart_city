@@ -1,0 +1,3 @@
+p, user, /citizens, POST
+p, admin, /citizens/:citizenId, PUT
+p, superadmin, 

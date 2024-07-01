@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common6.proto";
+
+service AirQualityStationService {
+    rpc CreateStation(Station) returns (Void) {}
+    rpc UpdateStation(Station) returns (Void) {}
+    rpc DeleteStation(ById) returns (Void) {}
+    rpc GetStation(ById) returns (Station) {}
+}
+message Station {
+    string StationId = 1;
+    Point  Location = 2;
+    string InstallationDate = 3;
+}

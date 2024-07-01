@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common.proto";
+
+service DemographicDataService {
+    rpc CreateDemographicData (DemographicDataCreate) returns (Void) {}
+    rpc UpdateDemographicData (DemographicDataCreate) returns (Void) {}
+    rpc DeleteDemographicData (ById) returns (Void) {}
+    rpc GetDemographicDatas (DemographicDataFilter) returns (DemographicDataList) {}
+}
+message DemographicData {
+    string DataId =1;
+    string ZoneId =2;
+    int32 Population = 3;
+    int32 MedianAge = 4;
+    float MedianIncome = 5;
+    string DataYear = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message DemographicDataCreate {
+    string DataId =1;
+    string ZoneId =2;
+    int32 Population = 3;
+    int32 MedianAge = 4;
+    float MedianIncome = 5;
+    string DataYear = 6;
+}
+message DemographicDataUpdate {
+    string ZoneId =1;
+    int32 Population = 2;
+    int32 MedianAge = 3;
+    float MedianIncome = 4;
+    string DataYear = 5;
+}
+message DemographicDataList {
+    repeated DemographicData DemographicDatas = 1;
+}
+message DemographicDataFilter {
+    string DataId =1;
+    string ZoneId =2;
+    int32 Population = 3;
+    int32 MedianAge = 4;
+    float MedianIncome = 5;
+    string DataYear = 6;
+}

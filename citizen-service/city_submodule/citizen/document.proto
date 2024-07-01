@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "/genproto/citizen";
+
+package citizen;
+
+import "city_submodule/citizen/common.proto";
+import "city_submodule/citizen/citizen.proto";
+
+service CitizenDocumentService {
+    rpc UploadDocument(DocumentCreate) returns (Document) {}
+    rpc GetCitizenDocuments(ById) returns (DocumentList) {}
+}
+message Document {
+    string DocumentId = 1;
+    CitizenModel CitizenId = 2;
+    string DocumentType = 3;
+    string FilePath = 4;
+    string CreateAt = 5;
+    string UpdateAt = 6;
+    string DeleteAt = 7;
+}
+message DocumentCreate {
+    string DocumentId = 1;
+    string CitizenId = 2;
+    string DocumentType = 3;
+    string FilePath = 4;
+}
+message DocumentModel {
+    string CitizenId = 1;
+    string DocumentType = 2;
+    string FilePath = 3;
+}
+message DocumentList {
+    repeated Document Model = 1;
+}

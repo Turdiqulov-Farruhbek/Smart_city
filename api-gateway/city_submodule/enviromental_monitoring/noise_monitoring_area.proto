@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common6.proto";
+
+service NoiseMonitoringAreService {
+    rpc CreateNoiseMonitoringArea(NoiseAreaCreate) returns (NoiseArea) {}
+    rpc UpdateNoiseMonitoringArea(NoiseAreaCreate) returns (NoiseArea) {}
+    rpc DeleteNoiseMonitoringArea(ById) returns (Void) {}
+    rpc GetNoiseMonitoringArea(ById) returns (NoiseArea) {}
+}
+message NoiseArea {
+    string ZoneId =1;
+    string ZoneName =2;
+    Polygon AreaCovered =3;
+    string CreatedAt =4;
+    string UpdatedAt =5;
+    int32  DeletedAt =6;
+}
+message NoiseAreaCreate {
+    string ZoneId =1;
+    string ZoneName =2;
+    Polygon AreaCovered =3;
+}
+message NoiseCreateUpdate {
+    string ZoneName =1;
+    Polygon AreaCovered =2;
+}
+

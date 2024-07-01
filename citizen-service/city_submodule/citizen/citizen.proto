@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "/genproto/citizen";
+
+package citizen;
+
+import "city_submodule/citizen/common.proto";
+
+service CitizenService {
+    rpc RegisterCitizen(CitizenCreate) returns (Citizen) {}
+    rpc GetCitizenProfile(ById) returns (Citizen) {}
+    rpc UpdateCitizenProfile(CitizenCreate) returns (Citizen) {}
+    rpc DeleteCitizenProfile(ById) returns (Void) {}
+}
+
+message Citizen {
+    string CitizenId = 1;
+    string UserId = 2;
+    string FirstName = 3;
+    string LastName = 4;
+    string DateOfBirth = 5;
+    string Address = 6;
+    string PhoneNumber = 7;
+    string Email = 8;
+    string CreateAt = 9;
+    string UpdateAt = 10;
+    string DeleteAt = 11;
+}
+message CitizenCreate {
+    string CitizenId = 1;
+    string UserId = 2;
+    string FirstName = 3;
+    string LastName = 4;
+    string DateOfBirth = 5;
+    string Address = 6;
+    string PhoneNumber = 7;
+    string Email = 8;
+}    
+message CitizenModel {
+    string UserId = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    string DateOfBirth = 4;
+    string Address = 5;
+    string PhoneNumber = 6;
+    string Email = 7;
+}

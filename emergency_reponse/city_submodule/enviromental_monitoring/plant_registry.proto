@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common.proto";
+
+service PlantRegistryService {
+    rpc RegisterPlants(PlantRegistry) returns (Void) {}
+    rpc GetPlantRegistries(PlantRegistryFilter) returns (PlantRegistryList) {}
+    rpc UpdatePlantRegistry(PlantRegistry) returns (Void) {}
+    rpc DeletePlantRegistry(ById) returns (Void) {}
+}
+message PlantRegistry {
+    string RegistryId =1;
+    string SpaceId =2;
+    string SpeciesName =3;
+    int32 Quantity =4;
+    string PlantDate =5;
+}
+message PlantRegistryList {
+    repeated PlantRegistry PlantRegistries =1;
+}
+message PlantRegistryFilter {
+    string RegistryId =1;
+    string SpaceId =2;
+    string SpeciesName =3;
+    int32 Quantity =4;
+    string PlantDate =5;
+}

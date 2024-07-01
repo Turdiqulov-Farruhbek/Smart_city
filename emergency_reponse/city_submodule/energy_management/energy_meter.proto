@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "/genproto/energy_management";
+
+package energy_management;
+
+import "common.proto";
+
+service EnenrgyMeterService {
+    rpc CreateEnergyMeter(EnergyMeterCreate) returns (EnergyMeter) {}
+    rpc UpdateEnergyMeter(EnergyMeterCreate) returns (EnergyMeter) {}
+    rpc DeleteEnergyMeter(ById) returns (Void) {}
+    rpc GetEnergyMeter(ById) returns (EnergyMeter) {}
+}
+message EnergyMeterCreate {
+    string MeterId = 1;
+    string BuildingId = 2;
+    string MeterType = 3;
+}
+message EnergyMeterUpdate {
+    string BuildingId = 1;
+    string MeterType = 2;
+}
+message EnergyMeter {
+    string MeterId = 1;
+    string BuildingId = 2;
+    string MeterType = 3;
+    string CreatedAt = 4;
+    string UpdatedAt = 5;
+    string DeletedAt = 6;
+}

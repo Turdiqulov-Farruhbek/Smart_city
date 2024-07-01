@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+message Void {}
+
+message ById {
+    string Id = 1;
+}
+message Filter {
+    int32 limit = 1;
+    int32 offset = 2;
+}

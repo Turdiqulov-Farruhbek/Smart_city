@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common6.proto";
+
+service WasteCollectionService {
+    rpc CreateWasteCollectionSchedule (WasteCollectionScheduleCreate) returns (Void) {}
+    rpc UpdateWasteCollectionSchedule (WasteCollectionScheduleCreate) returns (Void) {}
+    rpc DeleteWasteCollectionSchedule (ById) returns (Void) {}
+    rpc GetWasteCollectionSchedules (WasteScheduleFilter) returns (WasteScheduleList) {}
+}
+message WasteCollectionScheduleCreate {
+    string ScheduleId = 1;
+    string Address = 2;
+    string CollectionDay = 3;
+    string WasteType = 4;
+}
+message WasteCollectionSchedule {
+    string ScheduleId = 1;
+    string Address = 2;
+    string CollectionDay = 3;
+    string WasteType = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message WasteScheduleList {
+    repeated WasteCollectionSchedule Schedules = 1;
+}
+message WasteScheduleFilter {
+    string Address = 1;
+    string WasteType = 2;
+}

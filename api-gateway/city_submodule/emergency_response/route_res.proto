@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common4.proto";
+
+service EvacuationRouteService{
+    rpc Create(RoutesCreateReq) returns(RoutesRes){}
+    rpc GetById(ById) returns(RoutesGetByIdRes){}
+    rpc GetAll(Filter) returns(RoutesGetAllRes){}
+    rpc Update(RoutesUpdateReq) returns(RoutesRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message RoutesCreateReq{
+    string start_point = 1;
+    string end_point = 2;
+    string description = 3;
+}
+
+message RoutesRes{
+    string id = 1;
+    string start_point = 2;
+    string end_point = 3;
+    string description = 4;
+}
+
+message RoutesGetByIdRes{
+    RoutesRes route = 1;
+}
+
+message RoutesGetAllRes{
+    repeated RoutesRes routes = 1;
+}
+
+message RoutesUpdateReq{
+    string id = 1;
+    RoutesCreateReq route = 2;
+}

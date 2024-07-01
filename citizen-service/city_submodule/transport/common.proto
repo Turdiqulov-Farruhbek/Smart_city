@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+message Void {}
+
+message ById {
+    string Id = 1;
+}

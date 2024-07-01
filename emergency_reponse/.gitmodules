@@ -1,0 +1,3 @@
+[submodule "city_submodule"]
+	path = city_submodule
+	url = git@gitlab.com:acumen931026/city_submodule.git

@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common.proto";
+
+service RecyclingCenterService {
+    rpc CreateRecyclingCenter (RecyclingCenterCreate) returns (Void) {}
+    rpc UpdateRecyclingCenter (RecyclingCenterCreate) returns (Void) {}
+    rpc DeleteRecyclingCenter (ById) returns (Void) {}
+    rpc GetRecyclingCenters (RecyclingCenterFilter) returns (RecyclingCenterList) {}
+}
+message RecyclingCenterCreate {
+    string CenterId = 1;
+    string CenterName = 2;
+    string Address = 3;
+    string AcceptedMaterials = 4;
+}
+message RecyclingCenter {
+    string CenterId = 1;
+    string CenterName = 2;
+    string Address = 3;
+    string AcceptedMaterials = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message RecyclingCenterList {
+    repeated RecyclingCenter RecyclingCenters = 1;
+}
+message RecyclingCenterFilter {
+    string CenterId = 1;
+    string CenterName = 2;
+    string Address = 3;
+    string AcceptedMaterials = 4;
+}
+message RecyclingCenterModel {
+    string CenterName = 1;
+    string Address = 2;
+    string AcceptedMaterials = 3;
+}

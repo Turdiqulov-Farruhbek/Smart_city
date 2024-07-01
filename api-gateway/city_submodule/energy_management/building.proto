@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "/genproto/energy_management";
+
+package energy_management;
+
+import "common5.proto";
+
+service BuildingService {
+    rpc CreateBuilding(BuildingCreate) returns (Building) {}
+    rpc UpdateBuilding(BuildingCreate) returns (Building) {}
+    rpc DeleteBuilding(ById) returns (Void) {}
+    rpc GetBuilding(ById) returns (Building) {}
+}
+message BuildingCreate {
+    string BuildingId = 1;
+    string Address = 2;
+    string BuildingType = 3;
+    string TotalArea = 4;
+}
+message BuildingUpdate {
+    string Address = 1;
+    string BuildingType = 2;
+    string TotalArea = 3;
+}
+message Building {
+    string BuildingId = 1;
+    string Address = 2;
+    string BuildingType = 3;
+    string TotalArea = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}

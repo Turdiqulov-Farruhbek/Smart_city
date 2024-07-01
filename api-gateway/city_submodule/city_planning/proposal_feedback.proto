@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common3.proto";
+
+service ProposalFeedbackService {
+    rpc CreateProposalFeedback (ProposalFeedbackCreate) returns (Void) {}
+    rpc UpdateProposalFeedback (ProposalFeedbackCreate) returns (Void) {}
+    rpc DeleteProposalFeedback (ById) returns (Void) {}
+    rpc GetProposalFeedbacks (FeedbackFilter) returns (ProposalFeedbackList) {}
+}
+message ProposalFeedback {
+    string FeedbackId = 1;
+    string ProposalId = 2;
+    string CitizenId = 3;
+    string FeedbackText = 4;
+    string SubmittedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message ProposalFeedbackCreate {
+    string FeedbackId = 1;
+    string ProposalId = 2;
+    string CitizenId = 3;
+    string FeedbackText = 4;
+}
+message ProposalFeedbackUpdate {
+    string ProposalId = 1;
+    string CitizenId = 2;
+    string FeedbackText = 3;
+}
+message ProposalFeedbackList {
+    repeated ProposalFeedback Feedbacks = 1;
+}
+message FeedbackFilter {
+    string FeedbackId = 1;
+    string ProposalId = 2;
+    string CitizenId = 3;
+    string FeedbackText = 4;
+}

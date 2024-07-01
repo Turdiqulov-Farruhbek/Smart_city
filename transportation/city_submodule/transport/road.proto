@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service RoadService {
+    rpc CreateRoad(RoadCreate) returns (RoadRes) {}
+    rpc UpdateRoad(RoadUpdate) returns (RoadRes) {}
+    rpc DeleteRoad(ById) returns (Void) {}
+    rpc GetRoad(ById) returns (RoadRes) {}
+}
+message Road {
+    string RoadId = 1;
+    string RoadName = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+    int32  Lenght = 5;
+    string CreatedAt = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message RoadRes {
+    string RoadId = 1;
+    string RoadName = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+    int32  Lenght = 5;
+}
+message RoadUpdate {
+    string RoadId = 1;
+    string RoadName = 2;
+    string StartPoint = 3;
+    string EndPoint = 4;
+    int32  Lenght = 5;
+}
+message RoadCreate {
+    string RoadName = 1;
+    string StartPoint = 2;
+    string EndPoint = 3;
+    int32  Lenght = 4;
+}

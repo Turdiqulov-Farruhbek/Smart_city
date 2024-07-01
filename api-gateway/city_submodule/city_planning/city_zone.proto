@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common3.proto";
+
+service CityZoneService {
+    rpc CreateCityZone(CityZoneCreate) returns (Void);
+    rpc UpdateCityZone(CityZoneCreate) returns (Void);
+    rpc DeleteCityZone(ById) returns (Void);
+    rpc GetCityZone(CityZoneFilter) returns (CityZoneList);
+}
+message CityZone {
+    string ZoneId =1;
+    string ZoneName =2;
+    Polygon Area =3;
+    string CurrentUsage =4;
+    string CreatedAt =5;
+    string UpdatedAt =6;
+    string DeletedAt =7;
+}
+message CityZoneCreate {
+    string ZoneId =1;
+    string ZoneName =2;
+    Polygon Area =3;
+    string CurrentUsage =4;
+}
+message CityZoneUpdate {
+    string ZoneName =1;
+    Polygon Area =2;
+    string CurrentUsage =3;
+}
+message CityZoneList {
+    repeated CityZone CityZones =1;
+}
+message CityZoneFilter {
+    string ZoneId =1;
+    string ZoneName =2;
+    Polygon Area =3;
+    string CurrentUsage =4;
+}

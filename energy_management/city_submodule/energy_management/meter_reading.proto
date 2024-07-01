@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "/genproto/energy_management";
+
+package energy_management;
+
+import "common.proto";
+
+service MeterReadingService {
+    rpc CreateMeterReading(MeterReading) returns (Void) {}
+    rpc GetMeterReading(ById) returns (MeterReading) {}
+    rpc UpdateMeterReading(MeterReading) returns (Void) {}
+    rpc GetHourlyEnergyForBuilding(ByHour) returns (EnergyReportBuilding) {}
+    rpc GetDailyEnergyForBuilding(ById) returns (EnergyReportBuilding) {}
+    rpc DeleteMeterReading(ById) returns (Void) {}
+}
+message MeterReading {
+    string ReadingId = 1;
+    string MeterId = 2;
+    float ReadingValue = 3;
+    string Time = 4;
+}
+message MeterReadingUpdate {
+    string MeterId = 1;
+    float ReadingValue = 2;
+    string Time = 3;
+}
+message EnergyReportBuilding {
+    string BuildingId = 1;
+    string Time = 2;
+    float  EnergyValue = 3;
+}
+message ByHour {
+    string BuildingId = 1;
+    string Time = 2;
+}

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common6.proto";
+
+service GreenSpaceService {
+    rpc CreateGreenSpace(GreenSpaceCreate) returns (Void) {}
+    rpc GetGreenSpaces(GreenSpaceFilter) returns (GreenSpaceList) {}
+    rpc UpdateGreenSpace(GreenSpaceCreate) returns (Void) {}
+    rpc DeleteGreenSpace(ById) returns (Void) {}
+}
+message GreenSpace {
+    string SpaceId =1;
+    string SpaceName =2;
+    Polygon Location =3;
+    float Area =4;
+    string Type =5;
+    string CreatedAt =6;
+    string UpdatedAt =7;
+    string DeletedAt =8;
+}
+message GreenSpaceCreate {
+    string SpaceId =1;
+    string SpaceName =2;
+    Polygon Location =3;
+    float Area =4;
+    string Type =5;
+}
+message GreenSpaceUpdate {
+    string SpaceName =1;
+    Polygon Location =2;
+    float Area =3;
+    string Type =4;
+}
+message GreenSpaceList {
+    repeated GreenSpace greenSpaces = 1;    
+}
+message GreenSpaceFilter {
+    string SpaceId =1;
+    string SpaceName =2;
+    Polygon Location =3;
+    float Area =4;
+    string Type =5;
+}

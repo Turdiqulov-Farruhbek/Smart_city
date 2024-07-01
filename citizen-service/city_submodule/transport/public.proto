@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service PublicTransportService {
+    rpc CreatePublicTransport(PublicTransportCreate) returns (PublicTransport) {}
+    rpc UpdatePublicTransport(PublicTransportCreate) returns (PublicTransport) {}
+    rpc DeletePublicTransport(ById) returns (Void) {}
+    rpc GetAllPublicTransport(ByRoute) returns (PublicTransportList) {}
+}
+
+message PublicTransport {
+    string PublicTransportId = 1;
+    string VehicleId = 2;
+    string DriverId = 3;
+    string RouteId = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message PublicTransportCreate {
+    string PublicTransportId = 1;
+    string VehicleId = 2;
+    string DriverId = 3;
+    string RouteId = 4;
+}
+message PublicTransportList {
+    repeated PublicTransport PublicTransports = 1;
+    int32 Count = 2;
+}
+message ByRoute {
+    string RouteId = 1;
+}

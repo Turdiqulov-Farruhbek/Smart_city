@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+
+service TransportSevice {
+    rpc GetLocationOfTrasnport(ById) returns (Location) {}
+    rpc CreateVehicle(VehicleCreate) returns (Vehicle) {}
+    rpc UpdateVehicle(VehicleCreate) returns (Vehicle) {}
+    rpc DeleteVehicle(ById) returns (Void) {}
+}
+message Vehicle {
+    string VehicleId = 1;
+    string VehicleType = 2;
+    int32 Capacity = 3;
+    string CurrentLocation = 4;
+    string Status = 5;
+    string CreatedAt = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message VehicleCreate {
+    string VehicleId = 1;
+    string VehicleType = 2;
+    int32  Capacity = 3;
+    string CurrentLocation = 4;
+    string Status = 5;
+}
+message Location {
+    string Location =1;
+    string Time =2;
+}
+

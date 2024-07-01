@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common3.proto";
+
+service InfrastuctureAssetService {
+    rpc CreateInfrastructureAsset (InfrastuctureAssetCreate) returns (Void) {}
+    rpc UpdateInfrastructureAsset (InfrastuctureAssetCreate) returns (Void) {}
+    rpc DeleteInfrastructureAsset (ById) returns (Void) {}
+    rpc GetInfrastructureAssets (InfrastuctureAssetFilter) returns (InfrastuctureAssetList) {}
+}
+message InfrastuctureAsset {
+    string AssetId = 1;
+    string AssetType = 2;
+    Point Location = 3;
+    string InstallationDate = 4;
+    string CurrentStatus = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message InfrastuctureAssetCreate {
+    string AssetId = 1;
+    string AssetType = 2;
+    Point Location = 3;
+    string InstallationDate = 4;
+    string CurrentStatus = 5;
+}
+message InfrastuctureAssetUpdate {
+    string AssetType = 1;
+    Point Location = 2;
+    string InstallationDate = 3;
+    string CurrentStatus = 4;
+}
+message InfrastuctureAssetList {
+    repeated InfrastuctureAsset Assets = 1;
+}
+message InfrastuctureAssetFilter {
+    string AssetId = 1;
+    string AssetType = 2;
+    Point Location = 3;
+    string InstallationDate = 4;
+    string CurrentStatus = 5;
+}

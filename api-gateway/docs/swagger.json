@@ -1,0 +1,2921 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API for Smart City Management System resources",
+        "title": "Smart City Management System API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/citizens/create": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Register a new citizen with the provided details.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Create a new citizen",
+                "parameters": [
+                    {
+                        "description": "Citizen Data",
+                        "name": "citizen",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/citizen.CitizenCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.Citizen"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/citizens/{citizenId}/documents": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create documents for a specific citizen.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Create documents for a citizen",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Citizen ID",
+                        "name": "citizenId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Document Data",
+                        "name": "document",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/citizen.ById"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.DocumentList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/citizens/{citizenId}/getbyid": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get the profile details of a citizen by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Get citizen profile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Citizen ID",
+                        "name": "citizenId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.Citizen"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/citizens/{citizenId}/requests": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all service requests made by a specific citizen.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Get citizen requests",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Citizen ID",
+                        "name": "citizenId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.ServiceReqList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a new service request for a citizen.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Create a new service request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Citizen ID",
+                        "name": "citizenId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Service Request Data",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/citizen.ServiceReqCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.ServiceReq"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/citizens/{citizenId}/update": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update the profile details of a citizen by ID.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "citizens"
+                ],
+                "summary": "Update citizen profile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Citizen ID",
+                        "name": "citizenId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Updated Citizen Data",
+                        "name": "citizen",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/citizen.CitizenCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/citizen.Citizen"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/alerts/areas/{areaId}": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Send an emergency alert to a specific area.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Send an alert to an area",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Area ID",
+                        "name": "areaId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Alert Data",
+                        "name": "alert",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.AlertsCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.AlertsRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/evacuation/routes/{areaId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get recommended evacuation routes for a specific area.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Get evacuation routes for an area",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Area ID",
+                        "name": "areaId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/emergency_response.RoutesGetByIdRes"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/incidents": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Report a new incident with the provided details.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Report a new incident",
+                "parameters": [
+                    {
+                        "description": "Incident Data",
+                        "name": "incident",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.IncidentsCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.IncidentsRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/incidents/active": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve all currently active incidents.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Get active incidents",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/emergency_response.IncidentsGetByIdRes"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/incidents/{incidentId}/status": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update the status of an incident by its ID.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Update incident status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Incident ID",
+                        "name": "incidentId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Incident Status Update",
+                        "name": "status",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.IncidentsUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.IncidentsRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/resources/available/{emergencyTypeId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all available resources for a specific type of emergency.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Get available resources by emergency type",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Emergency Type ID",
+                        "name": "emergencyTypeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/emergency_response.ResourcesGetByIdRes"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/emergency/resources/{resourceId}/dispatch": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Dispatch a resource to an incident or location.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "emergency"
+                ],
+                "summary": "Dispatch a resource",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Resource ID",
+                        "name": "resourceId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Resource Dispatch Data",
+                        "name": "dispatch",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.DispatchesCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/emergency_response.DispatchesRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/energy/consumption/buildings/{buildingId}/hourly": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve hourly energy consumption data for a specific building.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "energy"
+                ],
+                "summary": "Get hourly building energy consumption",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Building ID",
+                        "name": "buildingId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/energy_management.Building"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/energy/consumption/city/daily": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve daily energy consumption data for the city.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "energy"
+                ],
+                "summary": "Get daily city energy consumption",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/energy_management.EnergyMeter"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/energy/meters/{meterId}/readings": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Record energy meter readings for a specific meter.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "energy"
+                ],
+                "summary": "Record meter readings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Meter ID",
+                        "name": "meterId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Meter Reading Data",
+                        "name": "reading",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/energy_management.MeterReading"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/energy_management.Void"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/air-quality/city/forecast": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve air quality forecast data for the city.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Get city air quality forecast",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.AirQualityList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/air-quality/stations/{stationId}/current": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve current air quality data from a specific station.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Get current air quality",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Station ID",
+                        "name": "stationId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.Station"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/green-spaces/{spaceId}/status": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve status information for a specific green space.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Get green space status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Space ID",
+                        "name": "spaceId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.GreenSpaceList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/noise/zones/{zoneId}/levels": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve noise levels for a specific zone.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Get noise levels in a zone",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Zone ID",
+                        "name": "zoneId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.NoiseArea"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/plants/{speciesId}/register": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Register a new plant species.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Register a plant species",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Species ID",
+                        "name": "speciesId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Plant Species Registration Data",
+                        "name": "plant",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.PlantRegistry"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.Void"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/recycling/centers/{areaId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve information about recycling centers in a specific area.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "environment"
+                ],
+                "summary": "Get recycling centers by area",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Area ID",
+                        "name": "areaId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/enviromental_monitoring.RecyclingCenterList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/demographics/{areaId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get demographics details for a specific area by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Get demographics details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Area ID",
+                        "name": "areaId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.DemographicDataList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/infrastructure/{infrastructureId}/status": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get status of a specific infrastructure by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Get infrastructure status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Infrastructure ID",
+                        "name": "infrastructureId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.InfrastuctureAssetList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/land-use/{parcelId}/change-request": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a land-use change request for a specific parcel.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Create a land-use change request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Parcel ID",
+                        "name": "parcelId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.Void"
+                        }
+                    },
+                    "400": {
+                        "description": "error\": \"Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/permits/{permitTypeId}/requirements": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get requirements for a specific permit type by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Get permit requirements",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Permit Type ID",
+                        "name": "permitTypeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.BuildingPermitFilter"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/proposals": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a new planning proposal with the provided details.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Create a new planning proposal",
+                "parameters": [
+                    {
+                        "description": "Planning Proposal Data",
+                        "name": "proposal",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.PlanningProposalCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.Void"
+                        }
+                    },
+                    "400": {
+                        "description": "error\": \"Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/proposals/{proposalId}/feedback": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Submit feedback for a specific planning proposal.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Submit feedback for a planning proposal",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Proposal ID",
+                        "name": "proposalId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Proposal Feedback Data",
+                        "name": "feedback",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.ProposalFeedbackCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.Void"
+                        }
+                    },
+                    "400": {
+                        "description": "error\": \"Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/planning/zones/{zoneId}/current": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get current zone details by zone ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "city_planning"
+                ],
+                "summary": "Get current zone details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Zone ID",
+                        "name": "zoneId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/city_planning.CityZoneList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/incidents/report": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Report a transportation-related incident.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Report an incident",
+                "parameters": [
+                    {
+                        "description": "Incident Report Data",
+                        "name": "incident",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transport.IncidentCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/transport.Incident"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/maintenance/schedule": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve the maintenance schedule for transport infrastructure.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get maintenance schedule",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.MaintanceScheduleList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/parking-lots": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve information about all parking lots.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get all parking lots",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.PakingLotList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/parking-lots/{lotId}/reserve": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Reserve a parking lot by its ID.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Reserve a parking lot",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Lot ID",
+                        "name": "lotId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Parking Lot Reservation Data",
+                        "name": "reservation",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transport.ParkingLotCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ParkingLot"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/parking-lots/{lotId}/status": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve status information for a specific parking lot.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get parking lot status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Lot ID",
+                        "name": "lotId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.ParkingLot"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/roads/{roadId}/signals": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create or update signals for a specific road.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Control road signals",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Road ID",
+                        "name": "roadId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Road Signal Control Data",
+                        "name": "signals",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/transport.RoadCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/transport.Road"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/roads/{roadId}/traffic": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve traffic information for a specific road.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get road traffic status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Road ID",
+                        "name": "roadId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.Road"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/routes": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve all transport routes.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get all transport routes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.RouteList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/transport/routes/{routeId}/schedule": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve the schedule for a specific transport route.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "transport"
+                ],
+                "summary": "Get route schedule",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Route ID",
+                        "name": "routeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/transport.RouteScheduleList"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "citizen.ById": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.Citizen": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "CitizenId": {
+                    "type": "string"
+                },
+                "CreateAt": {
+                    "type": "string"
+                },
+                "DateOfBirth": {
+                    "type": "string"
+                },
+                "DeleteAt": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "UpdateAt": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.CitizenCreate": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "CitizenId": {
+                    "type": "string"
+                },
+                "DateOfBirth": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.CitizenModel": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "DateOfBirth": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.Document": {
+            "type": "object",
+            "properties": {
+                "CitizenId": {
+                    "type": "string"
+                },
+                "CreateAt": {
+                    "type": "string"
+                },
+                "DeleteAt": {
+                    "type": "string"
+                },
+                "DocumentId": {
+                    "type": "string"
+                },
+                "DocumentType": {
+                    "type": "string"
+                },
+                "FilePath": {
+                    "type": "string"
+                },
+                "UpdateAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.DocumentList": {
+            "type": "object",
+            "properties": {
+                "Model": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/citizen.Document"
+                    }
+                }
+            }
+        },
+        "citizen.Service": {
+            "type": "object",
+            "properties": {
+                "CitizenId": {
+                    "$ref": "#/definitions/citizen.CitizenModel"
+                },
+                "CreateAt": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "RequestType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "UpdateAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.ServiceReq": {
+            "type": "object",
+            "properties": {
+                "CitizenId": {
+                    "type": "string"
+                },
+                "CreateAt": {
+                    "type": "string"
+                },
+                "DeleteAt": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "RequestId": {
+                    "type": "string"
+                },
+                "RequestType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "UpdateAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.ServiceReqCreate": {
+            "type": "object",
+            "properties": {
+                "CitizenId": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "RequestId": {
+                    "type": "string"
+                },
+                "RequestType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                }
+            }
+        },
+        "citizen.ServiceReqList": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer"
+                },
+                "Model": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/citizen.Service"
+                    }
+                }
+            }
+        },
+        "city_planning.BuildingPermitFilter": {
+            "type": "object",
+            "properties": {
+                "ApplicationName": {
+                    "type": "string"
+                },
+                "PermitId": {
+                    "type": "string"
+                },
+                "PermitType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "ZoneId": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.CityZone": {
+            "type": "object",
+            "properties": {
+                "Area": {
+                    "$ref": "#/definitions/city_planning.Polygon"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "CurrentUsage": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                },
+                "ZoneId": {
+                    "type": "string"
+                },
+                "ZoneName": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.CityZoneList": {
+            "type": "object",
+            "properties": {
+                "CityZones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/city_planning.CityZone"
+                    }
+                }
+            }
+        },
+        "city_planning.DemographicData": {
+            "type": "object",
+            "properties": {
+                "DataId": {
+                    "type": "string"
+                },
+                "DataYear": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "MedianAge": {
+                    "type": "integer"
+                },
+                "MedianIncome": {
+                    "type": "number"
+                },
+                "Population": {
+                    "type": "integer"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                },
+                "ZoneId": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.DemographicDataList": {
+            "type": "object",
+            "properties": {
+                "DemographicDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/city_planning.DemographicData"
+                    }
+                }
+            }
+        },
+        "city_planning.InfrastuctureAsset": {
+            "type": "object",
+            "properties": {
+                "AssetId": {
+                    "type": "string"
+                },
+                "AssetType": {
+                    "type": "string"
+                },
+                "CurrentStatus": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "InstallationDate": {
+                    "type": "string"
+                },
+                "Location": {
+                    "$ref": "#/definitions/city_planning.Point"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.InfrastuctureAssetList": {
+            "type": "object",
+            "properties": {
+                "Assets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/city_planning.InfrastuctureAsset"
+                    }
+                }
+            }
+        },
+        "city_planning.PlanningProposalCreate": {
+            "type": "object",
+            "properties": {
+                "Description": {
+                    "type": "string"
+                },
+                "ProposalId": {
+                    "type": "string"
+                },
+                "ProposalType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "ZoneId": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.Point": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                }
+            }
+        },
+        "city_planning.Polygon": {
+            "type": "object",
+            "properties": {
+                "vertices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/city_planning.Point"
+                    }
+                }
+            }
+        },
+        "city_planning.ProposalFeedbackCreate": {
+            "type": "object",
+            "properties": {
+                "CitizenId": {
+                    "type": "string"
+                },
+                "FeedbackId": {
+                    "type": "string"
+                },
+                "FeedbackText": {
+                    "type": "string"
+                },
+                "ProposalId": {
+                    "type": "string"
+                }
+            }
+        },
+        "city_planning.Void": {
+            "type": "object"
+        },
+        "emergency_response.AlertsCreateReq": {
+            "type": "object",
+            "properties": {
+                "affected_area": {
+                    "type": "string"
+                },
+                "issued_at": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.AlertsRes": {
+            "type": "object",
+            "properties": {
+                "affected_area": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "issued_at": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.DispatchesCreateReq": {
+            "type": "object",
+            "properties": {
+                "arrived_at": {
+                    "type": "string"
+                },
+                "dispatched_at": {
+                    "type": "string"
+                },
+                "incident_id": {
+                    "type": "string"
+                },
+                "resource_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.DispatchesRes": {
+            "type": "object",
+            "properties": {
+                "arrived_at": {
+                    "type": "string"
+                },
+                "dispatched_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "incident_id": {
+                    "type": "string"
+                },
+                "resource_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.IncidentsCreateReq": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "reported_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.IncidentsGetByIdRes": {
+            "type": "object",
+            "properties": {
+                "incident": {
+                    "$ref": "#/definitions/emergency_response.IncidentsRes"
+                }
+            }
+        },
+        "emergency_response.IncidentsRes": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "reported_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.IncidentsUpdateReq": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "incident": {
+                    "$ref": "#/definitions/emergency_response.IncidentsCreateReq"
+                }
+            }
+        },
+        "emergency_response.ResourcesGetAllRes": {
+            "type": "object",
+            "properties": {
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/emergency_response.ResourcesRes"
+                    }
+                }
+            }
+        },
+        "emergency_response.ResourcesGetByIdRes": {
+            "type": "object",
+            "properties": {
+                "resource": {
+                    "$ref": "#/definitions/emergency_response.ResourcesRes"
+                }
+            }
+        },
+        "emergency_response.ResourcesRes": {
+            "type": "object",
+            "properties": {
+                "current_location": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "emergency_response.RoutesGetByIdRes": {
+            "type": "object",
+            "properties": {
+                "route": {
+                    "$ref": "#/definitions/emergency_response.RoutesRes"
+                }
+            }
+        },
+        "emergency_response.RoutesRes": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "start_point": {
+                    "type": "string"
+                }
+            }
+        },
+        "energy_management.Building": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "BuildingId": {
+                    "type": "string"
+                },
+                "BuildingType": {
+                    "type": "string"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "TotalArea": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "energy_management.EnergyMeter": {
+            "type": "object",
+            "properties": {
+                "BuildingId": {
+                    "type": "string"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "MeterId": {
+                    "type": "string"
+                },
+                "MeterType": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "energy_management.MeterReading": {
+            "type": "object",
+            "properties": {
+                "MeterId": {
+                    "type": "string"
+                },
+                "ReadingId": {
+                    "type": "string"
+                },
+                "ReadingValue": {
+                    "type": "number"
+                },
+                "Time": {
+                    "type": "string"
+                }
+            }
+        },
+        "energy_management.Void": {
+            "type": "object"
+        },
+        "enviromental_monitoring.AirQualityList": {
+            "type": "object",
+            "properties": {
+                "AirQualityReadings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enviromental_monitoring.AirQualityReading"
+                    }
+                }
+            }
+        },
+        "enviromental_monitoring.AirQualityReading": {
+            "type": "object",
+            "properties": {
+                "ReadingId": {
+                    "type": "string"
+                },
+                "StationId": {
+                    "type": "string"
+                },
+                "Time": {
+                    "type": "string"
+                },
+                "ozone_level": {
+                    "type": "number"
+                },
+                "pm10_level": {
+                    "type": "number"
+                },
+                "pm25_level": {
+                    "type": "number"
+                }
+            }
+        },
+        "enviromental_monitoring.GreenSpace": {
+            "type": "object",
+            "properties": {
+                "Area": {
+                    "type": "number"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "Location": {
+                    "$ref": "#/definitions/enviromental_monitoring.Polygon"
+                },
+                "SpaceId": {
+                    "type": "string"
+                },
+                "SpaceName": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "enviromental_monitoring.GreenSpaceList": {
+            "type": "object",
+            "properties": {
+                "greenSpaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enviromental_monitoring.GreenSpace"
+                    }
+                }
+            }
+        },
+        "enviromental_monitoring.NoiseArea": {
+            "type": "object",
+            "properties": {
+                "AreaCovered": {
+                    "$ref": "#/definitions/enviromental_monitoring.Polygon"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "integer"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                },
+                "ZoneId": {
+                    "type": "string"
+                },
+                "ZoneName": {
+                    "type": "string"
+                }
+            }
+        },
+        "enviromental_monitoring.PlantRegistry": {
+            "type": "object",
+            "properties": {
+                "PlantDate": {
+                    "type": "string"
+                },
+                "Quantity": {
+                    "type": "integer"
+                },
+                "RegistryId": {
+                    "type": "string"
+                },
+                "SpaceId": {
+                    "type": "string"
+                },
+                "SpeciesName": {
+                    "type": "string"
+                }
+            }
+        },
+        "enviromental_monitoring.Point": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                }
+            }
+        },
+        "enviromental_monitoring.Polygon": {
+            "type": "object",
+            "properties": {
+                "vertices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enviromental_monitoring.Point"
+                    }
+                }
+            }
+        },
+        "enviromental_monitoring.RecyclingCenter": {
+            "type": "object",
+            "properties": {
+                "AcceptedMaterials": {
+                    "type": "string"
+                },
+                "Address": {
+                    "type": "string"
+                },
+                "CenterId": {
+                    "type": "string"
+                },
+                "CenterName": {
+                    "type": "string"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "enviromental_monitoring.RecyclingCenterList": {
+            "type": "object",
+            "properties": {
+                "RecyclingCenters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/enviromental_monitoring.RecyclingCenter"
+                    }
+                }
+            }
+        },
+        "enviromental_monitoring.Station": {
+            "type": "object",
+            "properties": {
+                "InstallationDate": {
+                    "type": "string"
+                },
+                "Location": {
+                    "$ref": "#/definitions/enviromental_monitoring.Point"
+                },
+                "StationId": {
+                    "type": "string"
+                }
+            }
+        },
+        "enviromental_monitoring.Void": {
+            "type": "object"
+        },
+        "transport.Incident": {
+            "type": "object",
+            "properties": {
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "IncidentId": {
+                    "type": "string"
+                },
+                "RoadId": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "Time": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.IncidentCreate": {
+            "type": "object",
+            "properties": {
+                "Description": {
+                    "type": "string"
+                },
+                "RoadId": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "Time": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.MaintanceSchedule": {
+            "type": "object",
+            "properties": {
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "EndTime": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Organizer": {
+                    "type": "string"
+                },
+                "RoadId": {
+                    "type": "string"
+                },
+                "StartPoint": {
+                    "type": "string"
+                },
+                "StartTime": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "TotalArea": {
+                    "type": "integer"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.MaintanceScheduleList": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer"
+                },
+                "Schedules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/transport.MaintanceSchedule"
+                    }
+                }
+            }
+        },
+        "transport.PakingLotList": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer"
+                },
+                "ParkingLots": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/transport.ParkingLot"
+                    }
+                }
+            }
+        },
+        "transport.ParkingLot": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "FreeSpaces": {
+                    "type": "integer"
+                },
+                "LotId": {
+                    "type": "string"
+                },
+                "LotName": {
+                    "type": "string"
+                },
+                "OccupiedSpaces": {
+                    "type": "integer"
+                },
+                "TotalSpaces": {
+                    "type": "integer"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.ParkingLotCreate": {
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "FreeSpaces": {
+                    "type": "integer"
+                },
+                "LotName": {
+                    "type": "string"
+                },
+                "OccupiedSpaces": {
+                    "type": "integer"
+                },
+                "TotalSpaces": {
+                    "type": "integer"
+                }
+            }
+        },
+        "transport.Road": {
+            "type": "object",
+            "properties": {
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Lenght": {
+                    "type": "integer"
+                },
+                "RoadId": {
+                    "type": "string"
+                },
+                "RoadName": {
+                    "type": "string"
+                },
+                "StartPoint": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.RoadCreate": {
+            "type": "object",
+            "properties": {
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Lenght": {
+                    "type": "integer"
+                },
+                "RoadId": {
+                    "type": "string"
+                },
+                "RoadName": {
+                    "type": "string"
+                },
+                "StartPoint": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.Route": {
+            "type": "object",
+            "properties": {
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "RouteId": {
+                    "type": "string"
+                },
+                "RouteName": {
+                    "type": "string"
+                },
+                "RouteType": {
+                    "type": "string"
+                },
+                "StartPoint": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.RouteList": {
+            "type": "object",
+            "properties": {
+                "Routes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/transport.Route"
+                    }
+                }
+            }
+        },
+        "transport.RouteSchedule": {
+            "type": "object",
+            "properties": {
+                "ArrivalTime": {
+                    "type": "string"
+                },
+                "CreatedAt": {
+                    "type": "string"
+                },
+                "DayOfWeek": {
+                    "type": "integer"
+                },
+                "DeletedAt": {
+                    "type": "string"
+                },
+                "DepartureTime": {
+                    "type": "string"
+                },
+                "RouteId": {
+                    "type": "string"
+                },
+                "ScheduleId": {
+                    "type": "string"
+                },
+                "UpdatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "transport.RouteScheduleList": {
+            "type": "object",
+            "properties": {
+                "Schedules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/transport.RouteSchedule"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

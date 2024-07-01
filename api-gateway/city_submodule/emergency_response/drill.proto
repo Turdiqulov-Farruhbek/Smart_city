@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+import "common4.proto";
+
+service EmergencyDrillService {
+    rpc Create(DrillsCreateReq) returns(DrillsRes){}
+    rpc GetById(ById) returns(DrillsGetByIdRes){}
+    rpc GetAll(Filter) returns(DrillsGetAllRes){}
+    rpc Update(DrillsUpdateReq) returns(DrillsRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message DrillsCreateReq{
+    string type = 1;
+    string location = 2;
+    string scheduled_at = 3;
+    string completed_at = 4;
+}
+
+message DrillsRes{
+    string id = 1;
+    string type = 2;
+    string location = 3;
+    string scheduled_at = 4;
+    string completed_at = 5;
+}
+
+message DrillsGetByIdRes{
+    DrillsRes drill = 1;
+}
+
+message DrillsGetAllRes{
+    repeated DrillsRes drills = 1;
+}
+
+message DrillsUpdateReq{
+    string id = 1;
+    DrillsCreateReq drill = 2;
+}

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common3.proto";
+
+service PlanningProposalService {
+    rpc CreatePlanningProposal(PlanningProposalCreate) returns (Void);
+    rpc GetPlanningProposals(PlanningProposalFilter) returns (PlanningProposalList);
+    rpc UpdatePlanningProposal(PlanningProposalCreate) returns (Void);
+    rpc DeletePlanningProposal(ById) returns (Void);
+}
+message PlanningProposal {
+    string ProposalId =1;
+    string ZoneId =2;
+    string ProposalType =3;
+    string Description =4;
+    string Status =5;
+    string SubmittedAt =6;
+    string UpdatedAt =7;
+    string DeletedAt =8;
+}
+message PlanningProposalCreate {
+    string ProposalId =1;
+    string ZoneId =2;
+    string ProposalType =3;
+    string Description =4;
+    string Status =5;
+}
+message PlanningProposalUpdate {
+    string ZoneId =1;
+    string ProposalType =2;
+    string Description =3;
+    string Status =4;
+}
+message PlanningProposalList {
+    repeated PlanningProposal PlanningProposal =1;
+}
+message PlanningProposalFilter {
+    string ProposalId =1;
+    string ZoneId =2;
+    string ProposalType =3;
+    string Description =4;
+    string Status =5;
+}

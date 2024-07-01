@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common3.proto";
+
+service BuildingPermitService {
+    rpc CreateBuildingPermit (BuildingPermitCreate) returns (Void) {}
+    rpc DeleteBuildingPermit (ById) returns (Void) {}
+    rpc GetBuildingPermits (BuildingPermitFilter) returns (BuildingPermitFilter) {}
+    rpc UpdateBuildingPermit (BuildingPermitCreate) returns (Void) {}
+}
+message BuildingPermit {
+    string PermitId = 1;
+    string ZoneId = 2;
+    string PermitType = 3;
+    string ApplicationName = 4;
+    string Status = 5;
+    string CreatedAt = 6;
+    string ConfirmedAt = 7;
+    string DeletedAt = 8;
+}
+message BuildingPermitCreate {
+    string PermitId = 1;
+    string ZoneId = 2;
+    string PermitType = 3;
+    string ApplicationName = 4;
+    string Status = 5;
+}
+message BuildingPermitUpdate {
+    string ZoneId = 1;
+    string PermitType = 2;
+    string ApplicationName = 3;
+    string Status = 4;
+}
+message BuildingPermitList {
+    repeated BuildingPermit BuildingPermits = 1;
+}
+message BuildingPermitFilter {
+    string PermitId = 1;
+    string ZoneId = 2;
+    string PermitType = 3;
+    string ApplicationName = 4;
+    string Status = 5;
+}

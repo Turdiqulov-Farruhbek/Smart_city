@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = "/genproto/auth";
+
+package auth;
+
+import "common1.proto";
+
+service AuthService {
+    rpc RegisterUser(UserCreate) returns (User) {}
+    rpc Login(LoginReq) returns (Token) {}
+    rpc Logout(ById) returns (Void) {}
+    rpc UpdateUser(ById) returns (User) {}
+    rpc RefreshToken(ById) returns (Token) {}
+}
+message User {
+    string User_id = 1;
+    string Username = 2;
+    string Password = 3;
+    string Email = 4;
+    string LastLogin = 5;
+    string CreatedAt = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message UserCreate {
+    string User_id = 1;
+    string Username = 2;
+    string Password = 3;
+    string Email = 4;
+}
+message UserModel {
+    string Username = 1;
+    string Password = 2;
+    string Email = 3;
+}
+message Role {
+    string Role_id = 1;
+    string Name = 2;
+    string Description = 3;
+}
+message LoginReq {
+    string Username = 1;
+    string Password = 2;
+}
+message Token {
+    string AccessToken = 1;
+}
+

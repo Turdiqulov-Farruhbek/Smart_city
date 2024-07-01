@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common.proto";
+import "road.proto";
+
+service IncidemtService {
+    rpc CreateIncident(IncidentCreate) returns (IncidentRes) {}
+    rpc UpdateIncident(IncidentUpdate) returns (IncidentRes) {}
+    rpc DeleteIncident(ById) returns (Void) {}
+    rpc GetIncident(ById) returns (IncidentRes) {}
+    rpc GetAllIncedents(IncidentFilter) returns (IncidentList) {}
+}
+message IncidentUpdate {
+    string IncidentId = 1;
+    string Status = 2;
+    string RoadId = 3;
+    string Time = 4;
+    string Description = 5;
+}
+
+message IncidentCreate {
+    string Status = 1;
+    string RoadId = 2;
+    string Time = 3;
+    string Description = 4;
+}
+
+message Incident {
+    string IncidentId = 1;
+    string Status = 2;
+    string RoadId = 3;
+    string Time = 4;
+    string Description = 5;
+    string CreatedAt = 6;
+    string UpdatedAt = 7;
+    string DeletedAt = 8;
+}
+message IncidentRes {
+    string IncidentId = 1;
+    string Status = 2;
+    RoadRes Road = 3;
+    string Time = 4;
+    string Description = 5;
+}
+message IncidentFilter {
+    string Status = 1;
+    string RoadId= 2;
+    string TimeFrom = 3;
+    string TimeTo = 4;
+    Filter filter = 6;
+}
+message IncidentList {
+    repeated IncidentRes Incidents = 1;
+}

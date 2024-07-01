@@ -1,0 +1,143 @@
+syntax = "proto3";
+
+option go_package = "/genproto/transport";
+
+package transport;
+
+import "common7.proto";
+
+service ParkingService {
+    rpc CreateParkingSpcae(ParkingSpaceCreate) returns (ParkingSpace) {}
+    rpc GetParkingSpace(ById) returns (ParkingSpace) {}
+    rpc GetAllParkingSpaces(ParkingSpaceFilter) returns (ParkingSpaceList) {}
+    rpc UpdateParkingSpace(ParkingSpaceUpdate) returns (ParkingSpace) {}
+    rpc DeleteParkingSpace(ById) returns (Void) {}
+    rpc CreateParkingLot(ParkingLotCreate) returns (ParkingLot) {}
+    rpc UpdateParkingLot(ParkingLotUpdate) returns (ParkingLot) {}
+    rpc DeleteParkingLot(ById) returns (Void) {}
+    rpc GetAllParkingLots(ParkingLotFilter) returns (PakingLotList) {}
+    rpc GetParkingStatus(ById) returns (ParkingLot) {}
+    rpc ReserveParking(ParkingReservationCreate) returns (ParkingReservation) {}
+    rpc ReserveParkingUpdate(ParkingReservationUpdate) returns (ParkingReservation) {}
+    rpc GetReserveParking(ById) returns (ParkingReservation) {}
+    rpc GetAllReserveParking(ParkingReservationFilter) returns (ParkingReservationList) {}
+    rpc ReserveParkingDelete(ById) returns (Void) {}
+    // rpc CreateParkingSpcae(ParkingSpaceCreate) returns (ParkingSpace) {}
+    // rpc GetParkingSpace(ById) returns (ParkingSpace) {}
+    // rpc GetAllParkingSpaces(ParkingSpaceFilter) returns (ParkingSpaceList) {}
+    // rpc UpdateParkingSpace(ParkingSpaceUpdate) returns (ParkingSpace) {}
+    // rpc DeleteParkingSpace(ById) returns (Void) {}
+}
+
+message ParkingLot {
+    string LotId = 1;
+    string LotName = 2;
+    int32 TotalSpaces = 3;
+    int32 OccupiedSpaces = 4;
+    int32 FreeSpaces = 5;
+    string Address = 6;
+    string CreatedAt = 7;
+    string UpdatedAt = 8;
+    string DeletedAt = 9;
+}
+message ParkingLotCreate {
+    string LotName = 1;
+    int32 TotalSpaces = 2;
+    int32 OccupiedSpaces = 3;
+    int32 FreeSpaces = 4;
+    string Address = 5;
+}
+
+message ParkingLotUpdate {
+    string LotId = 1;
+    string LotName = 2;
+    int32 TotalSpaces = 3;
+    int32 OccupiedSpaces = 4;
+    int32 FreeSpaces = 5;
+    string Address = 6;
+}
+
+message ParkingLotFilter {
+    int32 MinTotalSpcaes = 1;
+    int32 MinFreeSpcaes = 2;
+    int32 MaxTotalSpcaes = 3;
+    int32 MaxFreeSpcaes = 4;
+    Filter filter = 5;
+}
+message PakingLotList {
+    repeated ParkingLot ParkingLots = 1;
+    int32 Count = 2;
+}
+message ParkingSpace {
+    string SpaceId = 1;
+    string LotId = 2;
+    int32 SpacesNumber = 3;
+    bool IsOccupied = 4;
+    string CreatedAt = 5;
+    string UpdatedAt = 6;
+    string DeletedAt = 7;
+}
+message ParkingSpaceUpdate {
+    string SpaceId = 1;
+    string LotId = 2;
+    int32 SpacesNumber = 3;
+    bool IsOccupied = 4;
+}
+
+message ParkingSpaceCreate {
+    string LotId = 1;
+    int32 SpacesNumber = 2;
+    bool IsOccupied = 3;
+}
+
+message ParkingSpaceFilter {
+    string LotId = 1;
+    int32 SpacesNumber = 2;
+    bool IsOccupied = 3;
+    Filter filter = 4;
+}
+
+message ParkingSpaceList {
+    repeated ParkingSpace parkingSpaces = 1;
+    int32 Count = 2;
+}
+
+message ParkingReservation {
+    string ReservationId = 1;
+    string ParkingSpaceId = 2;
+    string CitizenId = 3;
+    string TimeFrom = 4;
+    string TimeTo = 5;
+    string Status = 6;
+    string CreatedAt = 7;
+    string UpdatedAt = 8;
+    string DeletedAt = 9;
+}
+message ParkingReservationCreate {
+    string ParkingSpaceId = 1;
+    string CitizenId = 2;
+    string TimeFrom = 3;
+    string TimeTo = 4;
+    string Status = 5;
+}
+message ParkingReservationUpdate {
+    string ReservationId = 1;
+    string ParkingSpaceId = 2;
+    string CitizenId = 3;
+    string TimeFrom = 4;
+    string TimeTo = 5;
+    string Status = 6;
+}
+
+message ParkingReservationFilter {
+    string ParkingSpaceId = 1;
+    string CitizenId = 2;
+    string Time = 3;
+    string status = 4;
+    Filter filter = 5;
+}
+
+message ParkingReservationList {
+    repeated ParkingReservation parkingReservations = 1;
+    int32 Count = 2;
+}

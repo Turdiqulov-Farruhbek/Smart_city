@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "/genproto/city_planning";
+
+package city_planning;
+
+import "common.proto";
+
+service DevelopmentScenarioService {
+    rpc CreateScenario(ScenarioCreate) returns (Void) {}
+    rpc GetScenarios(ScenarioFilter) returns (ScenarioList) {}
+    rpc UpdateScenario(ScenarioCreate) returns (Void);
+    rpc DeleteScenario(ById) returns (Void);
+}
+message Scenario {
+    string ScenarioId = 1;
+    string Name = 2;
+    string Description = 3;
+    string CreatedAt = 4;
+    string UpdatedAt = 5;
+    string DeletedAt = 6;
+}
+message ScenarioCreate {
+    string ScenarioId = 1;
+    string Name = 2;
+    string Description = 3;
+}
+message ScenarioUpdate {
+    string Name = 1;
+    string Description = 2;
+}
+message ScenarioList {
+    repeated Scenario Scenarios = 1;
+}
+message ScenarioFilter {
+    string ScenarioId = 1;
+    string Name = 2;
+    string Description = 3;
+}

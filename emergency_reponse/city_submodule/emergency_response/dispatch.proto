@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "genproto/emergency_response";
+
+package emergency_response;
+
+import "common.proto";
+import "resource.proto";
+import "incident.proto";
+
+
+service ResourceDispatcheService{
+    rpc Create(DispatchesCreateReq) returns(DispatchesRes){}
+    rpc GetById(ById) returns(DispatchesFullRes){}
+    rpc GetAll(Filter) returns(DispatchesGetAllRes){}
+    rpc Update(DispatchesUpdateReq) returns(DispatchesRes){}
+    rpc Delete(ById) returns(Void){}
+}
+
+message DispatchesCreateReq{
+    string incident_id = 1;
+    string resource_id = 2;
+    string dispatched_at = 3;
+    string arrived_at = 4;
+}
+
+message DispatchesRes{
+    string id = 1;
+    string incident_id = 2;
+    string resource_id = 3;
+    string dispatched_at = 4;
+    string arrived_at = 5;
+}
+
+message DispatchesFullRes{
+    string id = 1;
+    string dispatched_at = 2;
+    string arrived_at = 3;
+    IncidentsRes incident = 4;
+    ResourcesRes resource = 5;
+}
+
+message DispatchesGetAllRes{
+    repeated DispatchesFullRes dispatches = 1;
+}
+
+message DispatchesUpdateReq{
+    string id = 1;
+    DispatchesCreateReq dispatch = 2;
+}

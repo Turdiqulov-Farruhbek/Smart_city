@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "/genproto/enviromental_monitoring";
+
+package enviromental_monitoring;
+
+import "common.proto";
+import "air_quality_station.proto";
+
+service AirQualityReadingService {
+    rpc CreateAirQualityReading (AirQualityReadingCreate) returns (Void) {}
+    rpc GetCityWideAirQuality (AirQualityFilter) returns (AirQualityList) {}
+    rpc GetCurrentAirQuality (ById) returns (AirQualityReading) {}
+}
+message AirQualityReadingCreate {
+    string ReadingId = 1;
+    string StationId = 2;
+    float pm25_level = 3;
+    float pm10_level = 4;
+    float ozone_level = 5;
+    string Time = 6;
+}
+message AirQualityReading {
+    string ReadingId = 1;
+    Station StationId = 2;
+    float pm25_level = 3;
+    float pm10_level = 4;
+    float ozone_level = 5;
+    string Time = 6;
+}
+message AirQualityList {
+    repeated AirQualityReading AirQualityReadings = 1;
+}
+message AirQualityFilter {
+    string StationId = 1;
+    string Time = 2;
+}
