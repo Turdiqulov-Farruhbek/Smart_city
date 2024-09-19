@@ -14,6 +14,7 @@ var (
     TransportationServiceURL = getEnv("TRANSPORTATION_SERVICE", "http://localhost:2133")
 )
 
+
 func getEnv(key, defaultValue string) string {
     if value, exists := os.LookupEnv(key); exists {
         return value
