@@ -28,6 +28,7 @@ gen-protoAll:
 	--go-grpc_out=./ \
 	city_submodule/*.proto
 
+
 swag-gen:
 	~/go/bin/swag init -g ./api/api.go -o docs force 1
 
